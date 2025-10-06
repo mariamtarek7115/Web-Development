@@ -1,0 +1,36 @@
+/* Reset basic browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General body styling */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #e9e2e2; /* dark black background */
+  color: #154d3d; /* light grey text */
+  text-align: center;
+  padding: 40px;
+}
+/* Make sure to include this in your CSS file */
+
+/* Projects section layout */
+.Project.List {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Each project box */
+.Project.item {
+  background-color: #e8e1e1;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
