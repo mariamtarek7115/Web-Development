@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mariam To-Do List</title>
+  <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+  <div class="todo-container">
+    <h1>To-Do List</h1>
+
+    <div class="add-task">
+      <input type="text" id="taskInput" placeholder="What task would you like to add?">
+      <button id="addButton">Add</button>
+    </div>
+
+    <div class="suggested-tasks">
+      <h3>Or choose a suggested task</h3>
+      <section class="suggestions">
+        <button class="suggestion">Study</button>
+        <button class="suggestion">Workout</button>
+        <button class="suggestion">Buy groceries</button>
+        <button class="suggestion">Clean room</button>
+      </section>
+    </div>
+
+    <ul id="taskList"></ul>
+  </div>
+
+  <script>
+    const addButton = document.getElementById('addButton');
+    const taskInput = document.getElementById('taskInput');
+    const taskList = document.getElementById('taskList');
+    const suggestions = document.querySelectorAll('.suggestion');
+
+
+    function addTask(taskText) {
+      if (taskText.trim() === '') return;
+
+      const li = document.createElement('li');
+      li.textContent = taskText;
+
+
+      li.addEventListener('click', () => {
+        li.classList.toggle('completed');
+      });
+
+ 
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = 'X';
+      deleteBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        li.remove();
+      });
+
+      li.appendChild(deleteBtn);
+      taskList.appendChild(li);
+      taskInput.value = '';
+    }
+
+    addButton.addEventListener('click', () => {
+      addTask(taskInput.value);
+    });
+    taskInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') addTask(taskInput.value);
+    });
+    suggestions.forEach(button => {
+      button.addEventListener('click', () => {
+        addTask(button.textContent);
+      });
+    });
+  </script>
+</body>
+</html>
